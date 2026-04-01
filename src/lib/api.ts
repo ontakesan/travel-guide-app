@@ -47,6 +47,9 @@ type CreatePinInput = {
   description: string
   lat: number
   lng: number
+  category?: string
+  access_note?: string
+  tags?: string[]
 }
 
 export async function createPin(userId: string, mapId: string, input: CreatePinInput): Promise<Pin> {

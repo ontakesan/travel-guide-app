@@ -6,6 +6,7 @@ import ShelfPage from './pages/ShelfPage'
 import CreateMapPage from './pages/CreateMapPage'
 import MyPage from './pages/MyPage'
 import MapDetailPage from './pages/MapDetailPage'
+import PinFormPage from './pages/PinFormPage'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
 
         {/* Full-screen pages (no bottom nav) */}
         <Route path="/maps/:id" element={<MapDetailPage />} />
+        <Route path="/maps/:id/pin/new" element={<PinFormPage />} />
       </Routes>
     </BrowserRouter>
   )

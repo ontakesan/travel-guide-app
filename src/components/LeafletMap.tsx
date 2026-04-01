@@ -16,9 +16,10 @@ type Props = {
   onMapClick?: (lat: number, lng: number) => void
   onPinClick?: (pin: Pin) => void
   readonly?: boolean
+  placingMode?: boolean
 }
 
-export default function LeafletMap({ pins, onMapClick, onPinClick, readonly = false }: Props) {
+export default function LeafletMap({ pins, onMapClick, onPinClick, readonly = false, placingMode = false }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
   const markersRef = useRef<Map<string, L.Marker>>(new Map())
@@ -54,6 +55,12 @@ export default function LeafletMap({ pins, onMapClick, onPinClick, readonly = fa
       mapRef.current = null
     }
   }, [])
+
+  // 配置モード時のカーソル切り替え
+  useEffect(() => {
+    if (!mapRef.current) return
+    mapRef.current.getContainer().style.cursor = placingMode ? 'crosshair' : ''
+  }, [placingMode])
 
   // ピンの同期
   useEffect(() => {
@@ -91,7 +98,10 @@ export default function LeafletMap({ pins, onMapClick, onPinClick, readonly = fa
         .addTo(map)
         .bindTooltip(pin.title, { direction: 'top', offset: [0, -28] })
 
-      marker.on('click', () => onPinClick?.(pin))
+      marker.on('click', (e: L.LeafletMouseEvent) => {
+        L.DomEvent.stopPropagation(e)
+        onPinClick?.(pin)
+      })
       markersRef.current.set(pin.id, marker)
     })
 
