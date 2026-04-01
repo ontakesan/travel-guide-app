@@ -68,7 +68,7 @@ export default function LeafletMap({ pins, onMapClick, onPinClick, readonly = fa
         className: '',
         html: `<div style="
           width:28px;height:28px;border-radius:50% 50% 50% 0;
-          background:#0ea5e9;border:2px solid #fff;
+          background:#1D9E75;border:2px solid #fff;
           box-shadow:0 2px 6px rgba(0,0,0,0.3);
           transform:rotate(-45deg);
           display:flex;align-items:center;justify-content:center;

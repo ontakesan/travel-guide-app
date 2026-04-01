@@ -40,13 +40,13 @@ export default function AuthPage() {
 
         <div className="flex rounded-lg overflow-hidden border border-gray-200 mb-6">
           <button
-            className={`flex-1 py-2 text-sm font-medium transition-colors ${mode === 'login' ? 'bg-sky-500 text-white' : 'text-gray-500 hover:bg-gray-50'}`}
+            className={`flex-1 py-2 text-sm font-medium transition-colors ${mode === 'login' ? 'bg-[#1D9E75] text-white' : 'text-gray-500 hover:bg-gray-50'}`}
             onClick={() => setMode('login')}
           >
             ログイン
           </button>
           <button
-            className={`flex-1 py-2 text-sm font-medium transition-colors ${mode === 'signup' ? 'bg-sky-500 text-white' : 'text-gray-500 hover:bg-gray-50'}`}
+            className={`flex-1 py-2 text-sm font-medium transition-colors ${mode === 'signup' ? 'bg-[#1D9E75] text-white' : 'text-gray-500 hover:bg-gray-50'}`}
             onClick={() => setMode('signup')}
           >
             新規登録
@@ -61,7 +61,7 @@ export default function AuthPage() {
               required
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#5DCAA5]"
               placeholder="example@email.com"
             />
           </div>
@@ -72,7 +72,7 @@ export default function AuthPage() {
               required
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#5DCAA5]"
               placeholder="6文字以上"
               minLength={6}
             />
@@ -84,7 +84,7 @@ export default function AuthPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full bg-sky-500 hover:bg-sky-600 disabled:opacity-50 text-white font-medium py-2 rounded-lg transition-colors"
+            className="w-full bg-[#1D9E75] hover:bg-[#0F6E56] disabled:opacity-50 text-white font-medium py-2 rounded-lg transition-colors"
           >
             {submitting ? '処理中...' : mode === 'login' ? 'ログイン' : '登録する'}
           </button>

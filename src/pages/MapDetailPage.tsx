@@ -111,14 +111,14 @@ export default function MapDetailPage() {
                 placeholder="スポット名 *"
                 value={pinForm.title}
                 onChange={e => setPinForm(f => f ? { ...f, title: e.target.value } : f)}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm mb-2 focus:outline-none focus:ring-2 focus:ring-[#5DCAA5]"
               />
               <textarea
                 placeholder="メモ（任意）"
                 value={pinForm.description}
                 onChange={e => setPinForm(f => f ? { ...f, description: e.target.value } : f)}
                 rows={2}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm mb-3 resize-none focus:outline-none focus:ring-2 focus:ring-sky-400"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm mb-3 resize-none focus:outline-none focus:ring-2 focus:ring-[#5DCAA5]"
               />
               <div className="flex gap-2">
                 <button
@@ -130,7 +130,7 @@ export default function MapDetailPage() {
                 <button
                   onClick={handleSavePin}
                   disabled={saving || !pinForm.title.trim()}
-                  className="flex-1 py-2 text-sm text-white bg-sky-500 rounded-lg hover:bg-sky-600 disabled:opacity-50"
+                  className="flex-1 py-2 text-sm text-white bg-[#1D9E75] rounded-lg hover:bg-[#0F6E56] disabled:opacity-50"
                 >
                   {saving ? '保存中...' : '追加'}
                 </button>
@@ -154,10 +154,10 @@ export default function MapDetailPage() {
                 <li
                   key={pin.id}
                   onClick={() => setSelectedPin(pin === selectedPin ? null : pin)}
-                  className={`px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors ${selectedPin?.id === pin.id ? 'bg-sky-50' : ''}`}
+                  className={`px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors ${selectedPin?.id === pin.id ? 'bg-[#E1F5EE]' : ''}`}
                 >
                   <div className="flex items-start gap-2">
-                    <span className="shrink-0 w-5 h-5 rounded-full bg-sky-500 text-white text-[10px] font-bold flex items-center justify-center mt-0.5">
+                    <span className="shrink-0 w-5 h-5 rounded-full bg-[#1D9E75] text-white text-[10px] font-bold flex items-center justify-center mt-0.5">
                       {i + 1}
                     </span>
                     <div className="flex-1 min-w-0">

@@ -34,3 +34,20 @@ export type Pin = {
   created_at: string
   updated_at: string
 }
+
+export type Guide = {
+  user_id: string
+  display_name: string
+  bio: string | null
+  avatar_url: string | null
+  map_count: number
+  follower_count: number
+}
+
+export type UserProfile = {
+  id: string
+  display_name: string | null
+  bio: string | null
+  avatar_url: string | null
+  created_at: string
+}

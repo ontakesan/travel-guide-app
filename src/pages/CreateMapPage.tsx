@@ -44,7 +44,7 @@ export default function CreateMapPage() {
       {/* ヘッダー */}
       <header className="bg-white border-b border-gray-200 px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1 as never)}
           className="text-gray-500 hover:text-gray-700 text-xl leading-none"
         >
           ←
@@ -65,7 +65,7 @@ export default function CreateMapPage() {
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="例: 京都 穴場スポット巡り"
-              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400"
+              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5DCAA5]"
             />
           </div>
 
@@ -77,7 +77,7 @@ export default function CreateMapPage() {
               value={area}
               onChange={e => setArea(e.target.value)}
               placeholder="例: 京都、奈良、沖縄"
-              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400"
+              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5DCAA5]"
             />
           </div>
 
@@ -89,7 +89,7 @@ export default function CreateMapPage() {
               onChange={e => setDescription(e.target.value)}
               placeholder="このマップについて説明を書いてください"
               rows={3}
-              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400 resize-none"
+              className="w-full border border-gray-300 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5DCAA5] resize-none"
             />
           </div>
 
@@ -104,8 +104,8 @@ export default function CreateMapPage() {
                   onClick={() => toggleTag(tag)}
                   className={`px-3 py-1 rounded-full text-sm border transition-colors ${
                     tags.includes(tag)
-                      ? 'bg-sky-500 text-white border-sky-500'
-                      : 'bg-white text-gray-600 border-gray-300 hover:border-sky-300'
+                      ? 'bg-[#1D9E75] text-white border-[#1D9E75]'
+                      : 'bg-white text-gray-600 border-gray-300 hover:border-[#5DCAA5]'
                   }`}
                 >
                   {tag}
@@ -123,7 +123,7 @@ export default function CreateMapPage() {
             <button
               type="button"
               onClick={() => setIsPublic(v => !v)}
-              className={`w-12 h-6 rounded-full transition-colors relative ${isPublic ? 'bg-sky-500' : 'bg-gray-300'}`}
+              className={`w-12 h-6 rounded-full transition-colors relative ${isPublic ? 'bg-[#1D9E75]' : 'bg-gray-300'}`}
             >
               <span
                 className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${isPublic ? 'translate-x-6' : 'translate-x-0.5'}`}
@@ -136,7 +136,7 @@ export default function CreateMapPage() {
           <button
             type="submit"
             disabled={submitting || !title.trim()}
-            className="w-full bg-sky-500 hover:bg-sky-600 disabled:opacity-50 text-white font-medium py-3 rounded-xl transition-colors"
+            className="w-full bg-[#1D9E75] hover:bg-[#0F6E56] disabled:opacity-50 text-white font-medium py-3 rounded-xl transition-colors"
           >
             {submitting ? '作成中...' : 'マップを作成する'}
           </button>

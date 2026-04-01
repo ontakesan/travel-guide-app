@@ -14,7 +14,7 @@ export default function MapCard({ map }: Props) {
       className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
     >
       {/* カバー画像 */}
-      <div className="h-36 bg-gradient-to-br from-sky-100 to-blue-200 relative">
+      <div className="h-36 bg-gradient-to-br from-[#E1F5EE] to-[#9FE1CB] relative">
         {map.cover_url && (
           <img src={map.cover_url} alt={map.title} className="w-full h-full object-cover" />
         )}
@@ -37,7 +37,7 @@ export default function MapCard({ map }: Props) {
         {map.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-3">
             {map.tags.slice(0, 3).map(tag => (
-              <span key={tag} className="text-xs bg-sky-50 text-sky-600 px-2 py-0.5 rounded-full">
+              <span key={tag} className="text-xs bg-[#E1F5EE] text-[#085041] px-2 py-0.5 rounded-full">
                 {tag}
               </span>
             ))}
