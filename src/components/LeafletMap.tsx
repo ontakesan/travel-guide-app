@@ -27,7 +27,8 @@ export default function LeafletMap({ pins, onMapClick, onPinClick, readonly = fa
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
 
-    const map = L.map(containerRef.current).setView([35.6812, 139.7671], 12)
+    const map = L.map(containerRef.current, { zoomControl: false }).setView([35.6812, 139.7671], 12)
+    L.control.zoom({ position: 'bottomright' }).addTo(map)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map)
@@ -39,7 +40,16 @@ export default function LeafletMap({ pins, onMapClick, onPinClick, readonly = fa
     }
 
     mapRef.current = map
+
+    // コンテナサイズ変化（iOS キーボード開閉含む）に追従
+    const ro = new ResizeObserver(() => map.invalidateSize())
+    ro.observe(containerRef.current)
+    const handleVVResize = () => map.invalidateSize()
+    window.visualViewport?.addEventListener('resize', handleVVResize)
+
     return () => {
+      ro.disconnect()
+      window.visualViewport?.removeEventListener('resize', handleVVResize)
       map.remove()
       mapRef.current = null
     }

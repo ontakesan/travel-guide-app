@@ -10,14 +10,30 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
+      includeAssets: ['favicon.svg', 'pwa-192x192.png', 'pwa-512x512.png'],
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/[a-z]+\.tile\.openstreetmap\.org\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'osm-tiles',
+              expiration: { maxEntries: 200, maxAgeSeconds: 7 * 24 * 60 * 60 },
+            },
+          },
+        ],
+      },
       manifest: {
         name: '旅先案内',
         short_name: '旅先案内',
         description: 'ガイドマップを作成・共有するアプリ',
-        theme_color: '#0ea5e9',
+        theme_color: '#1D9E75',
         background_color: '#ffffff',
         display: 'standalone',
+        orientation: 'portrait',
         start_url: '/',
+        scope: '/',
         icons: [
           {
             src: 'pwa-192x192.png',
