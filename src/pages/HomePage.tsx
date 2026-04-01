@@ -15,17 +15,18 @@ export default function HomePage() {
   const [fetching, setFetching] = useState(true)
   const [error, setError] = useState('')
 
-  if (loading) return null
-  if (!user) return <Navigate to="/auth" replace />
-
   useEffect(() => {
+    if (!user) return
     setFetching(true)
     setError('')
     const fn = tab === 'public' ? fetchPublicMaps() : fetchMyMaps(user.id)
     fn.then(setMaps)
       .catch(e => setError(e.message))
       .finally(() => setFetching(false))
-  }, [tab])
+  }, [tab, user])
+
+  if (loading) return null
+  if (!user) return <Navigate to="/auth" replace />
 
   return (
     <div className="min-h-screen bg-gray-50">
